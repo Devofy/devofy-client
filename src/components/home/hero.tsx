@@ -18,9 +18,7 @@ function Hero() {
       }}
     >
       {/* Navbar */}
-      <div className="absolute top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-6xl z-50">
-        <Navbar />
-      </div>
+      
 
       {/* Overlay for contrast */}
       <div className="absolute inset-0 bg-white/50 dark:bg-black/50 backdrop-blur-[2px]" />
@@ -46,7 +44,7 @@ function Hero() {
         >
           Power Your Apps <br />
           With{" "}
-          <span className="bg-gradient-to-r from-blue-500 to-indigo-500 bg-clip-text text-transparent">
+          <span className="bg-blue-500 bg-clip-text text-transparent">
             Intelligent Webhooks
           </span>
         </motion.h1>
@@ -70,12 +68,12 @@ function Hero() {
           transition={{ delay: 0.6, duration: 0.7 }}
           className="mt-10 flex flex-wrap gap-4 justify-center"
         >
-          <Button className="px-6 py-3 text-lg rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow-md">
+          <Button className="px-6 py-3 text-lg rounded blue4 text-white shadow-md">
             Get Started
           </Button>
           <Button
             variant="outline"
-            className="px-6 py-3 text-lg rounded-full border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-white/10"
+            className="px-6 py-3 text-lg rounded border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-white/10"
           >
             Learn More
           </Button>

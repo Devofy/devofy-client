@@ -1,4 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap'); */
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -128,7 +131,10 @@
 }
 
 * {
-  font-family: "Share Tech Mono", monospace;
+  /* font-family: "Share Tech Mono", monospace; */
+  font-family: "JetBrains Mono", monospace;
+  
+   
   font-weight: 400;
   font-style: normal;
 }
@@ -163,4 +169,8 @@
 }
 .primary:hover{
   background-color: var(--blue-300);
+}
+
+button{
+  cursor: pointer;
 }

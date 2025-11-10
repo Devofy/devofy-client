@@ -5,7 +5,7 @@ import React from "react";
 
 export default function WebhookServices() {
   return (
-    <section className="w-full flex flex-col items-center justify-center px-6 sm:px-10 py-24 mb-6 border-t border-border/70">
+    <section className="w-full bg-linear-to-b from flex flex-col items-center justify-center px-6 sm:px-10 py-24 mb-6 border-t border-border/70">
       {/* ======= Intro Section ======= */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
@@ -26,7 +26,7 @@ export default function WebhookServices() {
           <span className="absolute -right-8 w-6 h-px bg-blue-300/60 dark:bg-blue-600"></span>
         </motion.div>
         <motion.h2
-          className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6"
+          className="text-5xl md:text-6xl font-extrabold leading-tight bg-black dark:bg-white bg-clip-text text-transparent mb-6"
           // initial={{ opacity: 0, y: 20 }}
           // whileInView={{ opacity: 1, y: 0 }}
           // transition={{ delay: 0.2 }}
@@ -187,7 +187,7 @@ const services = [
     title: "Webhook Gateway & Storage",
     desc: "We act as a buffer between your providers (Stripe, Shopify) and your app — capturing, storing, and forwarding every webhook safely. Never lose a webhook again, even if your server is down.",
     icon: <Database className="w-8 h-8 text-gray-900 dark:text-gray-100" />,
-    hueA: 220,
+    hueA: 200,
     hueB: 260,
   },
   {
@@ -203,14 +203,14 @@ const services = [
     icon: (
       <LayoutDashboard className="w-8 h-8 text-gray-900 dark:text-gray-100" />
     ),
-    hueA: 40,
-    hueB: 80,
+    hueA: 180,
+    hueB: 210,
   },
   {
     title: "AI Error Analysis",
     desc: "Our AI automatically analyzes failed webhooks, explains the issue in plain English, and suggests fixes — so you debug in minutes, not hours.",
     icon: <Bot className="w-8 h-8 text-gray-900 dark:text-gray-100" />,
-    hueA: 330,
-    hueB: 360,
+    hueA: 220,
+    hueB: 200,
   },
 ];

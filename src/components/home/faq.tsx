@@ -1,7 +1,18 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import { Card } from "@/components/ui/card";
+
+// --- Mock Card Component ---
+const Card = ({
+  className,
+  children,
+}: {
+  className: string;
+  children: React.ReactNode;
+}) => {
+  return <div className={className}>{children}</div>;
+};
+// ----------------------------
 
 const faqs = [
   {
@@ -40,14 +51,22 @@ export default function FaqSection() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   return (
-    <section className="relative w-full bg-gradient-to-b from-gray-50 to-gray-100 dark:from-[#0b0c10] dark:to-[#0d1117] py-16 px-6 sm:px-10 mb-6">
-      {/* Subtle background grid */}
+    <section
+      className="
+        relative w-full 
+        bg-gradient-to-b 
+        from-white via-blue-100/40 to-white 
+        dark:from-[#0e1117] dark:via-[#10141c] dark:to-[#0e1117]
+        py-16 px-6 sm:px-10 mb-6
+      "
+    >
+      {/* Subtle background grid overlay */}
       <motion.div
-        className="absolute inset-0 opacity-[0.06]"
+        className="absolute inset-0 opacity-[0.04] pointer-events-none"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0)",
-          backgroundSize: "20px 20px",
+            "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.2) 1px, transparent 0)",
+          backgroundSize: "22px 22px",
         }}
       />
 
@@ -56,7 +75,7 @@ export default function FaqSection() {
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-3xl md:text-4xl font-bold text-center mb-6 bg-blue-600 bg-clip-text text-transparent"
+          className="text-4xl md:text-5xl font-bold text-center mb-6 bg-blue-600 bg-clip-text text-transparent"
         >
           Frequently Asked Questions
         </motion.h2>
@@ -74,7 +93,12 @@ export default function FaqSection() {
           {faqs.map((faq, index) => (
             <Card
               key={index}
-              className="border border-gray-200 dark:border-gray-800 bg-white/60 dark:bg-[#15191e]/70 backdrop-blur-md transition-all"
+              className="
+                border border-gray-200 dark:border-gray-800 
+                bg-white/60 dark:bg-white/5
+                backdrop-blur-md transition-all 
+                rounded-lg overflow-hidden
+              "
             >
               <button
                 onClick={() =>
@@ -100,20 +124,19 @@ export default function FaqSection() {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.1 }}
-                    className="overflow-hidden px-6 pb-5 text-gray-600 dark:text-gray-400"
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="overflow-hidden"
                   >
-                    {faq.answer}
+                    <p className="px-6 pb-5 text-gray-600 dark:text-gray-400">
+                      {faq.answer}
+                    </p>
                   </motion.div>
                 )}
               </AnimatePresence>
             </Card>
           ))}
         </div>
-
-        {/* Decorative divider */}
       </div>
-    
     </section>
   );
 }
