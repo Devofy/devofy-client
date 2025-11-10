@@ -13,9 +13,10 @@ import WorkflowLayout from "./pages/home/workflowLayout";
 function App() {
   return (
     <>
-      <div className="max-w-7xl w-6xl fixed top-8 z-50 mx-auto left-1/2 -translate-x-1/2">
+      <div className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] sm:w-[90%] max-w-7xl z-50">
         <Navbar />
       </div>
+
       <Hero />
       <WorkflowLayout />
       <div className="">
