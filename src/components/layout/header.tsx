@@ -1,12 +1,16 @@
 import { useLocation } from "react-router-dom";
-import { useMemo } from "react";
-import { Bell, Search } from "lucide-react";
+import { useMemo, useState } from "react";
+import { Bell, Moon, Search, Sun } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useTheme } from "../utils/theme-provider";
+import { motion } from "framer-motion";
+import { Button } from "../ui/button";
 
 export default function Header() {
   const location = useLocation();
-
+  const { theme, setTheme } = useTheme();
+  const [themeRotation, setThemeRotation] = useState(0);
   // Dynamically get the page title from URL path
   const pageTitle = useMemo(() => {
     const path = location.pathname.replace("/", "");
@@ -42,6 +46,35 @@ export default function Header() {
           <Bell className="h-5 w-5 text-gray-600 dark:text-gray-300" />
           <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
         </button>
+
+        <motion.div
+          style={{ display: "inline-block" }}
+          animate={{ rotate: themeRotation }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+          onClick={() => setThemeRotation((prev) => prev + 360)}
+        >
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+            className="border-border relative"
+          >
+            <Sun
+              className={`h-[1.2rem] w-[1.2rem] transition-all ${
+                theme === "light"
+                  ? "opacity-100 rotate-0 scale-100"
+                  : "opacity-0 -rotate-90 scale-0"
+              }`}
+            />
+            <Moon
+              className={`absolute h-[1.2rem] w-[1.2rem] transition-all ${
+                theme === "dark"
+                  ? "opacity-100 rotate-0 scale-100"
+                  : "opacity-0 rotate-90 scale-0"
+              }`}
+            />
+          </Button>
+        </motion.div>
 
         {/* Avatar */}
         <Avatar className="cursor-pointer border border-gray-200 dark:border-gray-800">

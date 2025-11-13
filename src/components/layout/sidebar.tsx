@@ -5,14 +5,15 @@ import {
   Activity,
   Key,
   Settings,
-  Radio,
   LogOut,
   User,
   Workflow,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import logo from "@/assets/logo-removebg-preview.png"
+import { useNavigate, useLocation } from "react-router-dom";
+import { useClerk } from "@clerk/clerk-react";
+import logo from "@/assets/logo-removebg-preview.png";
 
 const menuItems = [
   { name: "Dashboard", icon: Home, href: "/dashboard" },
@@ -28,6 +29,15 @@ interface SidebarProps {
 }
 
 export default function Sidebar({ expanded, setExpanded }: SidebarProps) {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { signOut } = useClerk();
+
+  const handleLogout = async () => {
+    await signOut();
+    navigate("/login");
+  };
+
   return (
     <motion.aside
       initial={false}
@@ -49,10 +59,7 @@ export default function Sidebar({ expanded, setExpanded }: SidebarProps) {
       {/* Top Section */}
       <div className="flex flex-col gap-2 p-3">
         <div className="flex items-center gap-3 px-3 py-2 mb-4">
-          <img
-            src={logo}
-            className="w-8 h-8 rounded-xl flex-shrink-0"
-          />
+          <img src={logo} className="w-8 h-8 rounded-xl shrink-0" />
           <motion.h1
             initial={false}
             animate={{
@@ -66,36 +73,43 @@ export default function Sidebar({ expanded, setExpanded }: SidebarProps) {
           </motion.h1>
         </div>
 
-        {menuItems.map(({ name, icon: Icon, href }) => (
-          <Button
-            key={name}
-            variant="ghost"
-            className={cn(
-              "flex items-center gap-3 justify-start px-3 py-2 w-full rounded-xl",
-              "text-gray-700 dark:text-gray-300 hover:bg-gray-200/50 dark:hover:bg-gray-800/60",
-              "transition-colors duration-200"
-            )}
-          >
-            <Icon className="h-5 w-5 shrink-0" />
-            <motion.span
-              initial={false}
-              animate={{
-                opacity: expanded ? 1 : 0,
-                width: expanded ? "auto" : 0,
-              }}
-              transition={{ duration: 0.2 }}
-              className="text-sm font-medium whitespace-nowrap overflow-hidden"
+        {menuItems.map(({ name, icon: Icon, href }) => {
+          const isActive = location.pathname === href;
+
+          return (
+            <Button
+              key={name}
+              variant="ghost"
+              onClick={() => navigate(href)}
+              className={cn(
+                "flex items-center gap-3 justify-start px-3 py-2 w-full rounded-xl transition-colors duration-200",
+                isActive
+                  ? "bg-gray-200/60 dark:bg-gray-800/70 text-gray-900 dark:text-white"
+                  : "text-gray-700 dark:text-gray-300 hover:bg-gray-200/50 dark:hover:bg-gray-800/60"
+              )}
             >
-              {name}
-            </motion.span>
-          </Button>
-        ))}
+              <Icon className="h-5 w-5 shrink-0" />
+              <motion.span
+                initial={false}
+                animate={{
+                  opacity: expanded ? 1 : 0,
+                  width: expanded ? "auto" : 0,
+                }}
+                transition={{ duration: 0.1 }}
+                className="text-sm font-medium whitespace-nowrap overflow-hidden"
+              >
+                {name}
+              </motion.span>
+            </Button>
+          );
+        })}
       </div>
 
       {/* Bottom Section */}
       <div className="flex flex-col gap-2 p-3 border-t border-gray-200/50 dark:border-gray-800/50">
         <Button
           variant="ghost"
+          onClick={() => navigate("/profile")}
           className="flex items-center gap-3 justify-start px-3 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-200/50 dark:hover:bg-gray-800/60 rounded-xl transition-colors duration-200"
         >
           <User className="h-5 w-5 shrink-0" />
@@ -114,6 +128,7 @@ export default function Sidebar({ expanded, setExpanded }: SidebarProps) {
 
         <Button
           variant="ghost"
+          onClick={handleLogout}
           className="flex items-center gap-3 justify-start px-3 py-2 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/30 rounded-xl transition-colors duration-200"
         >
           <LogOut className="h-5 w-5 shrink-0" />

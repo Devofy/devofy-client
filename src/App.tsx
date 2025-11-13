@@ -13,6 +13,7 @@ import Webhooks from "./components/home/webHooks";
 import Monitoring from "./components/home/monitoring";
 import ApiKeys from "./components/home/apiKeys";
 import Settings from "./components/home/settings";
+import FactorOne from "./components/auth/factor-one";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup/verify-email-address" element={<VerifyEmail />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/login/factor-one" element={<FactorOne />} />
 
         {/* Dashboard Layout (Protected) */}
         <Route element={<Layout />}>

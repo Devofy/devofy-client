@@ -41,8 +41,7 @@ export default function LoginPage() {
                 socialButtonsVariant: "iconButton",
               },
             }}
-            routing="path"
-            path="/login"
+            routing="virtual"
             signUpUrl="/signup"
             afterSignInUrl="/dashboard"
           />
