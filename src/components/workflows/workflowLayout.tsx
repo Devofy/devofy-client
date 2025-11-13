@@ -1,4 +1,4 @@
-import IntegrationsHero from "@/components/home/IntegrationHero";
+import IntegrationsHero from "@/components/homePage/IntegrationHero";
 import GitHubWorkflow from "@/components/workflows/github2";
 import ShopifyWorkflow from "@/components/workflows/shopify2";
 import SlackWorkflow from "@/components/workflows/slack2";
@@ -54,7 +54,7 @@ export default function WorkflowsSection() {
 
       {/* Workflow Grid */}
       <div className="relative flex flex-col gap-28 md:gap-40 z-10 max-w-7xl mx-auto px-6">
-        <IntegrationsHero/>
+        <IntegrationsHero />
         {/* GitHub Workflow */}
         {/* <motion.div
           className="flex flex-col md:flex-row items-center justify-between gap-10"
@@ -145,7 +145,6 @@ export default function WorkflowsSection() {
       </div>
 
       {/* Decorative gradient lines */}
-      
     </section>
   );
 }

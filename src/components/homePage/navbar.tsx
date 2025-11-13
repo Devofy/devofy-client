@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Github, Moon, Sun, Menu, X } from "lucide-react";
 import { useTheme } from "../utils/theme-provider";
 import { motion } from "framer-motion"; // ✅ Correct import (you had "* as motion" earlier)
+import { useNavigate } from "react-router-dom";
 
 export function Navbar() {
   const [stars, setStars] = useState<number | null>(null);
@@ -14,7 +15,7 @@ export function Navbar() {
   const [menuRotation, setMenuRotation] = useState(0);
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
+  const nav = useNavigate();
   // ✅ Fetch GitHub stars (optional)
   useEffect(() => {
     fetch("https://api.github.com/repos/yourusername/yourrepo")
@@ -101,7 +102,12 @@ export function Navbar() {
 
           {/* ✅ CTA Button */}
           <motion.div className="hidden sm:block">
-            <Button className="text-black primary">
+            <Button
+              className="text-black primary"
+              onClick={() => {
+                nav("/signup");
+              }}
+            >
               Get started <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </motion.div>
@@ -159,7 +165,12 @@ export function Navbar() {
             </a>
 
             {/* ✅ CTA Button (Mobile) */}
-            <Button className="sm:hidden w-full text-black primary">
+            <Button
+              className="sm:hidden w-full text-black primary"
+              onClick={() => {
+                nav("/signup");
+              }}
+            >
               Get started <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>

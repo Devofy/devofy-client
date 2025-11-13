@@ -1,38 +1,39 @@
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import FaqSection from "./components/home/faq";
-import Footer from "./components/home/footer";
-import Hero from "./components/home/hero";
-import Navbar from "./components/home/navbar";
-import PricingSection from "./components/home/pricing";
-import WebhookServices from "./components/home/serviceCards";
 
-import WebhookFlow from "./components/home/webhookflow";
-
-import WorkflowLayout from "./pages/home/workflowLayout";
+import Home from "./pages/home";
+import SignupPage from "./components/auth/signup";
+import LoginPage from "./components/auth/login";
+import VerifyEmail from "./components/auth/verfyEmail";
+import ForgotPassword from "./components/auth/forgetPassword";
+// Layout + dashboard pages
+import Layout from "./components/layout/layout";
+import Dashboard from "./components/home/dashboard";
+import Webhooks from "./components/home/webHooks";
+import Monitoring from "./components/home/monitoring";
+import ApiKeys from "./components/home/apiKeys";
+import Settings from "./components/home/settings";
 
 function App() {
   return (
     <>
-      <div className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] sm:w-[90%] max-w-7xl z-50">
-        <Navbar />
-      </div>
+      <Routes>
+        {/* Public Routes */}
+        <Route path="/" element={<Home />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup/verify-email-address" element={<VerifyEmail />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
 
-      <Hero />
-      <WorkflowLayout />
-      <div className="">
-        <WebhookServices />
-      </div>
-      <div className="">
-        <WebhookFlow />
-      </div>
-      <PricingSection />
-      <FaqSection />
-      <Footer />
-
-      {/* <GitHubWorkflow />
-      <StripeWorkflow />
-      <ShopifyWorkflow />
-      <SlackWorkflow /> */}
+        {/* Dashboard Layout (Protected) */}
+        <Route element={<Layout />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/webhooks" element={<Webhooks />} />
+          <Route path="/monitoring" element={<Monitoring />} />
+          <Route path="/api-keys" element={<ApiKeys />} />
+          <Route path="/settings" element={<Settings />} />
+        </Route>
+      </Routes>
     </>
   );
 }
