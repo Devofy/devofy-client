@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { SignIn } from "@clerk/clerk-react";
-import logo from "@/assets/logo-removebg-preview.png";
 
 export default function LoginPage() {
   return (
@@ -17,7 +16,7 @@ export default function LoginPage() {
         className="w-full max-w-md"
       >
         <CardHeader className="text-center pt-8 mb-10">
-          <img src={logo} alt="" className="w-12 h-12 mx-auto" />
+          {/* <img src={logo} alt="" className="w-12 h-12 mx-auto" /> */}
           <h2 className="text-3xl font-semibold text-gray-900 tracking-tight">
             Welcome back
           </h2>

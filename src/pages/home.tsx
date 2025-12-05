@@ -17,10 +17,10 @@ function Home() {
       <Hero />
       <WorkflowLayout />
       <div className="">
-        <WebhookServices />
+        {/* <WebhookServices /> */}
       </div>
       <div className="">
-        <WebhookFlow />
+        {/* <WebhookFlow /> */}
       </div>
       <PricingSection />
       <FaqSection />
