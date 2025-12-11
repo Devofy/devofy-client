@@ -1,11 +1,12 @@
-import FaqSection from "@/components/homePage/faq";
-import Footer from "@/components/homePage/footer";
-import Hero from "@/components/homePage/hero";
-import Navbar from "@/components/homePage/navbar";
-import PricingSection from "@/components/homePage/pricing";
-import WebhookServices from "@/components/homePage/serviceCards";
+import FaqSection from "@/components/home(401)/faq";
+import Footer from "@/components/home(401)/footer";
+import Hero from "@/components/home(401)/hero";
+import Navbar from "@/components/home(401)/navbar";
+import PricingSection from "@/components/home(401)/pricing";
+import WebhookServices from "@/components/home(401)/serviceCards";
 
-import WorkflowLayout from "../components/homePage/workflowLayout";
+import WorkflowLayout from "../components/home(401)/workflowLayout";
+import TestimonialsSection from "@/components/home(401)/reviews";
 
 function Home() {
   return (
@@ -22,6 +23,7 @@ function Home() {
       <div className="">{/* <WebhookFlow /> */}</div>
       <PricingSection />
       <FaqSection />
+      <TestimonialsSection />
       <Footer />
 
       {/* <GitHubWorkflow />
