@@ -19,7 +19,7 @@ const menuItems = [
   { name: "Dashboard", icon: Home, href: "/dashboard" },
   { name: "Webhooks", icon: Workflow, href: "/webhooks" },
   { name: "Monitoring", icon: Activity, href: "/monitoring" },
-  { name: "API Keys", icon: Key, href: "/apikeys" },
+  { name: "API Keys", icon: Key, href: "/api-keys" },
   { name: "Settings", icon: Settings, href: "/settings" },
 ];
 

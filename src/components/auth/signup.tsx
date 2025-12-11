@@ -76,7 +76,6 @@ export default function SignupPage() {
             routing="path"
             path="/signup"
             signInUrl="/login"
-            redirectUrl="/dashboard"
           />
         </motion.div>
       </div>

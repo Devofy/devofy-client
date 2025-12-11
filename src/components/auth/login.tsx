@@ -42,7 +42,7 @@ export default function LoginPage() {
             }}
             routing="virtual"
             signUpUrl="/signup"
-            afterSignInUrl="/dashboard"
+            forceRedirectUrl="/dashboard"
           />
         </CardContent>
       </motion.div>

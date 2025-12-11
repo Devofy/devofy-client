@@ -1,4 +1,5 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Outlet, Navigate } from "react-router-dom";
+import { SignedIn, SignedOut, ClerkProvider } from "@clerk/clerk-react";
 import "./App.css";
 
 import Home from "./pages/home";
@@ -15,9 +16,32 @@ import ApiKeys from "./components/home/apiKeys";
 import Settings from "./components/home/settings";
 import FactorOne from "./components/auth/factor-one";
 
-function App() {
+// Protected Route Wrapper
+function ProtectedRoute() {
   return (
     <>
+      <SignedIn>
+        <Layout>
+          <Outlet />
+        </Layout>
+      </SignedIn>
+      <SignedOut>
+        <Navigate to="/login" replace />
+      </SignedOut>
+    </>
+  );
+}
+
+export default function App() {
+  // Get your publishable key from Clerk dashboard
+  const clerkPubKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+
+  return (
+    <ClerkProvider
+      publishableKey={clerkPubKey}
+      signUpForceRedirectUrl="/dashboard"
+      signInForceRedirectUrl="/dashboard"
+    >
       <Routes>
         {/* Public Routes */}
         <Route path="/" element={<Home />} />
@@ -27,8 +51,8 @@ function App() {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/login/factor-one" element={<FactorOne />} />
 
-        {/* Dashboard Layout (Protected) */}
-        <Route element={<Layout />}>
+        {/* Protected Dashboard Routes */}
+        <Route element={<ProtectedRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/webhooks" element={<Webhooks />} />
           <Route path="/monitoring" element={<Monitoring />} />
@@ -36,8 +60,6 @@ function App() {
           <Route path="/settings" element={<Settings />} />
         </Route>
       </Routes>
-    </>
+    </ClerkProvider>
   );
 }
-
-export default App;
