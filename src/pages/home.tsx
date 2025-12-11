@@ -4,8 +4,8 @@ import Hero from "@/components/homePage/hero";
 import Navbar from "@/components/homePage/navbar";
 import PricingSection from "@/components/homePage/pricing";
 import WebhookServices from "@/components/homePage/serviceCards";
-import WebhookFlow from "@/components/homePage/webhookflow";
-import WorkflowLayout from "../components/workflows/workflowLayout";
+
+import WorkflowLayout from "../components/homePage/workflowLayout";
 
 function Home() {
   return (
@@ -17,11 +17,9 @@ function Home() {
       <Hero />
       <WorkflowLayout />
       <div className="">
-        {/* <WebhookServices /> */}
+        <WebhookServices />
       </div>
-      <div className="">
-        {/* <WebhookFlow /> */}
-      </div>
+      <div className="">{/* <WebhookFlow /> */}</div>
       <PricingSection />
       <FaqSection />
       <Footer />

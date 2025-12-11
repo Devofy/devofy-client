@@ -50,7 +50,7 @@ const plans = [
 
 export default function PricingSection() {
   return (
-    <section className="relative py-24 px-6 sm:px-10 bg-gradient-to-b from-white via-gray-50 to-white dark:from-[#0b0c10] dark:via-[#0e1116] dark:to-[#0d1117] overflow-hidden">
+    <section className="relative py-24 px-6 sm:px-10 bg-gradient-to-b from-white via-gray-50 to-white dark:from-[#0b0c10] dark:via-[#0e1116] dark:to-[#0d1117] overflow-hidden mb-32">
       {/* Background Glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full bg-blue-500/10 blur-[120px]" />
@@ -62,9 +62,10 @@ export default function PricingSection() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="text-4xl md:text-5xl font-bold bg-blue-600 bg-clip-text text-transparent"
+          className="text-4xl md:text-5xl font-bold bg-black bg-clip-text text-transparent"
         >
-          Simple, transparent pricing
+          Simple,
+          <span className="text-blue-600">Transparent pricing</span>
         </motion.h2>
 
         <motion.p
@@ -145,8 +146,6 @@ export default function PricingSection() {
             </motion.div>
           ))}
         </div>
-
-        
       </div>
     </section>
   );
