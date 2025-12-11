@@ -134,7 +134,7 @@ function FaqCard({
       className={`relative overflow-hidden rounded-2xl border transition-all duration-300 ${
         isOpen
           ? "border-blue-500/50 bg-white dark:bg-neutral-900 shadow-lg shadow-blue-500/10"
-          : "border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900/50 hover:border-neutral-300 dark:hover:border-neutral-700"
+          : "border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900/50 hover:border-neutral-300 dark:hover:border-neutral-700"
       }`}
     >
       <button
